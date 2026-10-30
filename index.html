@@ -5,23 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的个人资源导航</title>
     <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; }
-        h1 { color: #333; }
-        .resource-box { background: #f4f4f4; padding: 20px; border-radius: 8px; margin-top: 20px; }
-        a { color: #0066cc; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        :root {
+            --primary-color: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: var(--text-color);
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        .category {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .category h2 {
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--bg-color);
+            color: var(--primary-color);
+        }
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+        }
+        .resource-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .resource-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.08);
+            border-color: var(--primary-color);
+        }
+        .resource-card a {
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .resource-card a:hover {
+            text-decoration: underline;
+        }
+        .resource-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+        /* 图片展示区样式：让图片直接平铺展示 */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+        .image-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .image-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover; /* 保证图片不变形铺满 */
+            display: block;
+        }
+        .image-caption {
+            padding: 10px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
-    <h1>欢迎来到我的个人资源网</h1>
-    <p>这是一个运行在云端的个人主页，所有人都可访问！</p>
-    
-    <div class="resource-box">
-        <h3>常用资源分享</h3>
-        <ul>
-            <li><a href="https://example.com" target="_blank">示例资源链接 1</a></li>
-            <li><a href="https://example.com" target="_blank">示例资源链接 2</a></li>
-        </ul>
-    </div>
+
+    <header>
+        <h1>🚀 我的个人资源导航</h1>
+        <p class="subtitle">图文并茂的个人云端主页，随时更新</p>
+    </header>
+
+    <main>
+        <!-- 图片直接展示板块 -->
+        <section class="category">
+            <h2>🖼️ 图片展示</h2>
+            <div class="image-grid">
+                
+                <!-- 示例 A：引用你上传到 GitHub 的本地图片（把 my-photo.jpg 改成你的图片文件名） -->
+                <div class="image-card">
+                    <img src="d56c8e6d4367c6b6eb3591061507f9f8.jpg" alt="我的图片">
+                    <p class="image-caption">这是我上传到仓库的本地图片</p>
+                </div>
+
+                <!-- 示例 B：引用网络上的图片链接 -->
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="网络示例图片">
+                    <p class="image-caption">这是直接引用的网络图片</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 网址资源板块 -->
+        <section class="category">
+            <h2>🔗 常用网址导航</h2>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <a href="https://github.com" target="_blank">GitHub</a>
+                    <p class="resource-desc">全球最大的代码托管与开源协作平台</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://dash.cloudflare.com" target="_blank">Cloudflare</a>
+                    <p class="resource-desc">网站托管、加速与安全防护面板</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 我的个人资源网 | Hosted on Cloudflare Pages (US Edge)</p>
+    </footer>
+
 </body>
 </html>
